@@ -1,0 +1,16 @@
+{
+  "name": "api-gateway-rsa-demo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "services/*"
+  ],
+  "scripts": {
+    "generate:keys": "node ./scripts/generate-keys.js",
+    "dev": "concurrently \"npm run dev -w services/auth-service\" \"npm run dev -w services/users-service\" \"npm run dev -w services/api-gateway\"",
+    "build": "npm run build -w services/auth-service && npm run build -w services/users-service && npm run build -w services/api-gateway"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
